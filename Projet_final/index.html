@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="ProjetFinal.css">
+
+ <body>
+    
+      <header>
+        <nav>
+          <div class="logo">Nandrandraina Harivony Augusto <span>RAMANAMANJATO</span></div>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+    
+      <!-- Accueil -->
+      <section id="accueil" class="acceuil">
+        <div class="acc-texte">
+          <h1>Je suis Nandrandraina, Développeur et ingénieur en devenir passionné par le web et le design !</h1>
+          <p>Voici quelques projets :</p>
+          <a href="#projets" class="btn">Voir mes projets</a>
+        </div>
+        <div class="accueil-img">
+          <img src="modèle.jpg" alt="Développement web">
+        </div>
+      </section>
+    
+      <!-- À propos -->
+      <section id="apropos" class="apropos">
+        <h2>À propos</h2>
+        <div class="contenu">
+          <div class="apropos-texte">
+            <p>Je m'appelle <strong>Nandrandraina</strong>, passionnée par la création de sites web modernes et interactifs.</p>
+            <p>Je suis actuellement étudiant en <strong> Génie Electrique et Informatique Industriel </strong>et en formation en <strong>développement web</strong>, et je cherche à améliorer mes compétences en HTML, CSS et JavaScript.</p>
+            <p>J'adore transformer mes idées en projets concrets et expérimenter avec les nouvelles technologies.</p>
+            <div class="cv-btn">
+              <a href="CV_Nandrandraina.pdf" class="btn">Télecharger mon CV</a>
+            </div>
+            
+          </div>
+          <div class="apropos-photo">
+            <img src="Photo_Nandrandraina.jpg" alt="Photo de profil">
+          </div>
+        </div>
+      </section>
+    
+    <!-- Projets -->
+    <section id="projets">
+    <h2>Mes Projets</h2>
+    <div class="projets-container">
+
+      <!-- Mini-jeu 1 : Heure en survol -->
+      <div class="carte-projet">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <p>(survoler avec le souris pour voir l'heure actuelle)</p>
+        <input type="text" id="heure" placeholder="HH:MM:SS" readonly>
+        <button onmouseover="demarrerHorloge()" onmouseout="arreterHorloge()">Voir</button>
+      </div>
+
+      <!-- Mini-jeu 2 : Longueur en temps réel (sans bouton) -->
+      <div class="carte-projet">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <p>(saisir un mot pour savoir sa longueur)</p>
+        <input type="text" id="chaine" placeholder="Entrez une chaîne" oninput="calculerLongueur()">
+        <p id="resultat1">Longueur : 0</p>
+      </div>
+
+      <!-- Mini-jeu 3 : Vérification d'âge au clic -->
+      <div class="carte-projet">
+        <p>Un mini-jeu interactif en JavaScript qui utilise des événements DOM.</p>
+        <p>(Taper un âge pour vérifier la majorité)</p>
+        <input type="text" id="age" placeholder="Entrez un âge">
+        <p id="resultat2">Vous êtes...</p>
+        <button onclick="verifierAge()">Voir</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Mini-jeu 1 : Heure en survol
+    let horlogeActive = false;
+    let timer;
+
+    function afficherHeure() {
+      const maintenant = new Date();
+      const h = String(maintenant.getHours()).padStart(2, '0');
+      const m = String(maintenant.getMinutes()).padStart(2, '0');
+      const s = String(maintenant.getSeconds()).padStart(2, '0');
+      document.getElementById("heure").value = `${h}:${m}:${s}`;
+      timer = setTimeout(afficherHeure, 1000);
+    }
+
+    function demarrerHorloge() {
+      if (!horlogeActive) {
+        horlogeActive = true;
+        afficherHeure();
+      }
+    }
+
+    function arreterHorloge() {
+      horlogeActive = false;
+      clearTimeout(timer);
+      document.getElementById("heure").value = "";
+    }
+
+    // Mini-jeu 2 : Longueur en temps réel
+    function calculerLongueur() {
+      const texte = document.getElementById("chaine").value;
+      document.getElementById("resultat1").textContent = `Longueur : ${texte.length}`;
+    }
+
+    // Mini-jeu 3 : Vérification d'âge au clic
+    function verifierAge() {
+      const age = parseInt(document.getElementById("age").value);
+      let message = "Vous êtes...";
+      if (!isNaN(age)) {
+        message = age >= 18 ? "Vous êtes majeur." : "Vous êtes mineur.";
+      }
+      document.getElementById("resultat2").textContent = message;
+    }
+  </script>
+      <!-- Compétences -->
+    <section id="competences">
+    <h2>Mes Compétences</h2>
+    <div class="skills-container">
+      <div class="skills-card">
+        <h3>Soft Skills</h3>
+        <label>Capacité d'apprentissage</label>
+        <progress value="60" max="100"></progress>
+
+        <label>Résolution de problème</label>
+        <progress value="70" max="100"></progress>
+
+        <label>Adaptabilité</label>
+        <progress value="65" max="100"></progress>
+      </div>
+
+      <div class="skills-card">
+        <h3>Hard Skills</h3>
+        <label>HTML</label>
+        <progress value="55" max="100"></progress>
+
+        <label>CSS</label>
+        <progress value="50" max="100"></progress>
+
+        <label>JavaScript</label>
+        <progress value="65" max="100"></progress>
+
+        <label>VS Code</label>
+        <progress value="65" max="100"></progress>
+      </div>
+    </div>
+  </section>
+    
+      <!-- Contact -->
+<section id="contact">
+  <h2>
+    <span class="white">Vous avez un</span>
+    <span class="accent">projet en tête</span>
+    <span class="white">? N'hésitez pas à me</span>
+    <span class="accent">contacter</span>
+  </h2>
+
+  <form action="nandrandrainaharivony@gmail.com" method="post" enctype="text/plain">
+    <div class="row">
+      <div class="field">
+        <label for="prenom">Votre prénom</label>
+        <input type="text" id="prenom" name="Prénom" placeholder="Nandrandraina Harivony Augusto" required>
+      </div>
+      <div class="field">
+        <label for="nom">Votre nom</label>
+        <input type="text" id="nom" name="Nom" placeholder="RAMANAMANJATO" required>
+      </div>
+    </div>
+
+    <label for="sujet">Votre sujet</label>
+    <input type="text" id="sujet" name="Sujet" placeholder="Développement d'un site vitrine" required>
+
+    <textarea id="message" name="Message" rows="5" placeholder="Écrivez votre message ici !" required></textarea>
+
+    <input type="submit" value="Envoyer">
+  </form>
+</section>
+
+      <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+       Designed by <a href="#apropos">Nandrandraina</a> with HTML, CSS, JS
+    </div>
+    <div class="footer-right">
+       <strong>Touts droits réservés - 2025</strong>
+    </div>
+</footer>
+
+    
+    </body>
+    </html>
+    
+</body>
+</html>
